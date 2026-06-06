@@ -117,14 +117,14 @@ input[type="text"] {
 /* MOBILE IMPROVEMENTS */
 @media (max-width: 600px) {
   body::before {
-    background-size: 50% 100%, 50% 100%;
-    background-position: left top, right top;
+    background-size: contain, contain;
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
   }
 
   .container {
     margin: 20px;
     padding: 25px;
-
   }
 
   h1 {
