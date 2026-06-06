@@ -1,14 +1,24 @@
-/* TWO SIDE-BY-SIDE BACKGROUND IMAGES */
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
 
+  /* Two background images side by side */
   background-image: url("bg-left.jpg"), url("bg-right.jpg");
   background-size: 50% 100%, 50% 100%;
   background-position: left top, right top;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed;
+
+  /* Soft blur effect */
+  filter: blur(3px);
+}
+
+/* Remove blur from the content box */
+.container {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(0px);
 }
 
 /* PASTEL PINK CONTENT BOX */
