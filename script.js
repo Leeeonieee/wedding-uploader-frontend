@@ -1,53 +1,45 @@
-const form = document.getElementById("uploadForm");
-const statusEl = document.getElementById("status");
-const thankyouEl = document.getElementById("thankyou");
-const submitBtn = document.getElementById("submitBtn");
-
-const BACKEND_URL = "https://wedding-uploader-backend.onrender.com/upload";
-
-form.addEventListener("submit", async (e) => {
+document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const filesInput = document.getElementById("files");
-  const files = filesInput.files;
+  const name = document.getElementById("name").value;
+  const files = [
+    ...document.getElementById("files").files,
+    ...document.getElementById("camera").files
+  ];
 
-  if (!name || !files.length) {
-    statusEl.textContent = "Veuillez entrer votre nom et choisir au moins un fichier.";
+  if (files.length === 0) {
+    alert("Veuillez sélectionner au moins un fichier.");
     return;
   }
 
-  submitBtn.disabled = true;
-  statusEl.textContent = "Envoi en cours, merci de patienter...";
-
   const formData = new FormData();
   formData.append("name", name);
+
   for (let file of files) {
     formData.append("files", file);
   }
 
-  try {
-    const res = await fetch(BACKEND_URL, {
-      method: "POST",
-      body: formData,
-    });
+  const progressBar = document.getElementById("progressBar");
+  progressBar.style.display = "block";
 
-    const data = await res.json();
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://wedding-uploader-backend.onrender.com/upload");
 
-    if (data.success) {
-      showThankYou();
-    } else {
-      statusEl.textContent = "Une erreur est survenue. Veuillez réessayer.";
-      submitBtn.disabled = false;
+  xhr.upload.onprogress = (event) => {
+    if (event.lengthComputable) {
+      const percent = (event.loaded / event.total) * 100;
+      progressBar.value = percent;
     }
-  } catch (err) {
-    console.error(err);
-    statusEl.textContent = "Impossible de contacter le serveur. Réessayez plus tard.";
-    submitBtn.disabled = false;
-  }
-});
+  };
 
-function showThankYou() {
-  form.classList.add("hidden");
-  thankyouEl.classList.remove("hidden");
-}
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      document.getElementById("uploadForm").classList.add("hidden");
+      document.getElementById("thankyou").classList.remove("hidden");
+    } else {
+      alert("Erreur lors de l'envoi.");
+    }
+  };
+
+  xhr.send(formData);
+});
