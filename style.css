@@ -118,9 +118,19 @@ input[type="text"] {
 @media (max-width: 600px) {
   body::before {
     background-size: contain, contain;
-    background-position: left center, right center;
+    background-position: top left, top right;
     background-repeat: no-repeat, no-repeat;
+    height: auto;
+    min-height: 200vh; /* makes the background scrollable */
   }
+
+  .container {
+    margin: 20px;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+  }
+}
 
   .container {
     margin: 20px;
