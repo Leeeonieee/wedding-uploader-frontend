@@ -20,13 +20,6 @@ body {
   filter: blur(4px);
 }
 
-/* Remove blur from the content box */
-.container {
-  position: relative;
-  z-index: 2;
-  backdrop-filter: blur(0px);
-}
-
 /* PASTEL PINK CONTENT BOX */
 .container {
   max-width: 550px;
