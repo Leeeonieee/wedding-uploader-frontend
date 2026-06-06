@@ -20,7 +20,7 @@ body::before {
   background-position: left top, right top;
   background-repeat: no-repeat, no-repeat;
 
-  filter: blur(4px);
+  filter: blur(2px);
 }
 
 /* PASTEL PINK CONTENT BOX */
