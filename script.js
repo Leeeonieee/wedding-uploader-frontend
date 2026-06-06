@@ -1,3 +1,32 @@
+// ------------------------------
+// FILE COUNTER FUNCTION
+// ------------------------------
+function updateFileCount() {
+  const files = [
+    ...document.getElementById("files").files,
+    ...document.getElementById("camera").files
+  ];
+
+  const fileCount = document.getElementById("fileCount");
+
+  if (files.length === 0) {
+    fileCount.textContent = "Aucun fichier sélectionné";
+  } else if (files.length === 1) {
+    fileCount.textContent = "1 fichier sélectionné";
+  } else {
+    fileCount.textContent = `${files.length} fichiers sélectionnés`;
+  }
+}
+
+// ------------------------------
+// EVENT LISTENERS FOR FILE COUNT
+// ------------------------------
+document.getElementById("files").addEventListener("change", updateFileCount);
+document.getElementById("camera").addEventListener("change", updateFileCount);
+
+// ------------------------------
+// UPLOAD HANDLER
+// ------------------------------
 document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
