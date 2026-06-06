@@ -1,10 +1,13 @@
+/* GLOBAL BODY SETTINGS */
 body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+}
 
-  /* Background wrapper with blur */
-.background-blur {
+/* BLURRED BACKGROUND LAYER */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +32,8 @@ body {
   background: rgba(255, 220, 230, 0.92); /* pastel pink */
   border-radius: 18px;
   text-align: center;
-  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1; /* ensures content stays above blurred background */
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
@@ -112,10 +116,8 @@ input[type="text"] {
 
 /* MOBILE IMPROVEMENTS */
 @media (max-width: 600px) {
-  body {
-    background-size: 100% 50%, 100% 50%;
-    background-position: top, bottom;
-  }
+
+  /* Background stays handled by body::before — no override needed */
 
   .container {
     margin: 20px;
