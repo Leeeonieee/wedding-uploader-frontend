@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Photos & Vidéos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Partagez vos souvenirs</h1>
+      <p>Merci de nous envoyer vos photos et vidéos du mariage.</p>
+
+      <form id="uploadForm">
+        <label for="name">Votre nom</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Nom et prénom"
+          required
+        />
+
+        <label for="files">Photos et vidéos</label>
+        <input
+          type="file"
+          id="files"
+          name="files"
+          accept="image/*,video/*"
+          multiple
+          capture="environment"
+          required
+        />
+
+        <button type="submit" id="submitBtn">Envoyer</button>
+        <p id="status" class="status"></p>
+      </form>
+
+      <div id="thankyou" class="thankyou hidden">
+        <h2>Merci beaucoup ! 💕</h2>
+        <p>Vos photos et vidéos ont été envoyées avec succès.</p>
+        <p>Merci de partager ces souvenirs avec nous.</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
