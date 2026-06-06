@@ -70,6 +70,12 @@ input[type="text"] {
   cursor: pointer;
 }
 
+.file-count {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+
 /* SUBMIT BUTTON */
 .submit-btn {
   width: 100%;
