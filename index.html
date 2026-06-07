@@ -9,49 +9,54 @@
 
 <body>
 
-<!-- MOBILE BACKGROUND IMAGES (must be INSIDE <body>, not above <html>) -->
-<div class="bg1"></div>
-<div class="bg2"></div>
+<!-- SCROLL WRAPPER (forces real scroll height) -->
+<div class="scroll-wrapper">
 
-<div class="container">
+  <!-- MOBILE BACKGROUND IMAGES -->
+  <div class="bg1"></div>
+  <div class="bg2"></div>
 
-  <h1>Camille & Foukou Mariage</h1>
-  <h2>Partagez vos souvenirs</h2>
+  <div class="container">
 
-  <p class="description">
-    Merci de partager vos photos et vidéos de notre quête photo du mariage
-    <strong>“Capturez Le Moment”</strong>.
-  </p>
+    <h1>Camille & Foukou Mariage</h1>
+    <h2>Partagez vos souvenirs</h2>
 
-  <form id="uploadForm">
+    <p class="description">
+      Merci de partager vos photos et vidéos de notre quête photo du mariage
+      <strong>“Capturez Le Moment”</strong>.
+    </p>
 
-    <input type="text" id="name" name="name" placeholder="Nom complet" required />
+    <form id="uploadForm">
 
-    <div class="button-group">
-      <label class="btn upload-btn">
-        📁 Télécharger photos / vidéos
-        <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
-      </label>
+      <input type="text" id="name" name="name" placeholder="Nom complet" required />
 
-      <label class="btn camera-btn">
-        📸 Prendre une photo / vidéo
-        <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
-      </label>
+      <div class="button-group">
+        <label class="btn upload-btn">
+          📁 Télécharger photos / vidéos
+          <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
+        </label>
+
+        <label class="btn camera-btn">
+          📸 Prendre une photo / vidéo
+          <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
+        </label>
+      </div>
+
+      <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
+
+      <progress id="progressBar" value="0" max="100"></progress>
+
+      <button type="submit" class="submit-btn">Envoyer</button>
+    </form>
+
+    <div id="thankyou" class="hidden">
+      <h2>Merci beaucoup !</h2>
+      <p>Vos photos et vidéos ont été envoyées avec succès.</p>
     </div>
 
-    <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
-
-    <progress id="progressBar" value="0" max="100"></progress>
-
-    <button type="submit" class="submit-btn">Envoyer</button>
-  </form>
-
-  <div id="thankyou" class="hidden">
-    <h2>Merci beaucoup !</h2>
-    <p>Vos photos et vidéos ont été envoyées avec succès.</p>
   </div>
 
-</div>
+</div> <!-- END scroll-wrapper -->
 
 <script src="script.js"></script>
 
@@ -60,11 +65,9 @@
 document.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
-  // FIRST IMAGE unblurs as you scroll
   const blur1 = Math.max(4 - scrollY / 40, 0);
   document.querySelector(".bg1").style.filter = `blur(${blur1}px)`;
 
-  // SECOND IMAGE unblurs when you reach it
   const blur2 = Math.max(4 - (scrollY - window.innerHeight) / 40, 0);
   document.querySelector(".bg2").style.filter = `blur(${blur2}px)`;
 });
