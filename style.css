@@ -116,42 +116,34 @@ input[type="text"] {
 
 @media (max-width: 600px) {
 
-  /* Background stays fixed but shows more of the images */
+  /* STACK IMAGES VERTICALLY + FULL WIDTH */
   body::before {
-    background-size: auto 100%, auto 100%; /* show full height, no zoom */
-    background-position: left center, right center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200vh; /* enough height for both images */
+
+    background-image: url("bg-left.jpg"), url("bg-right.jpg");
+    background-size: 100% auto, 100% auto; /* FULL WIDTH, full image visible */
+    background-position: top center, bottom center;
     background-repeat: no-repeat, no-repeat;
-    filter: blur(2px);
+
+    filter: blur(4px); /* starts blurred */
+    transition: filter 0.4s ease-out; /* smooth unblur */
+    z-index: -1;
   }
 
-  /* Content scrolls normally */
+  /* CONTENT SCROLLS NORMALLY */
+  body {
+    min-height: 200vh; /* matches background height */
+  }
+
+  /* CONTENT BOX */
   .container {
     margin: 20px auto;
     padding: 25px;
     position: relative;
     z-index: 2;
-  }
-
-  /* Add extra scroll space so users can see the background */
-  body {
-    padding-bottom: 120vh; /* scroll down to admire images */
-  }
-
-  /* Mobile text adjustments */
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-  }
-
-  .description {
-    font-size: 1.1rem;
-  }
-
-  .btn, .submit-btn {
-    font-size: 1.2rem;
-    padding: 15px;
   }
 }
