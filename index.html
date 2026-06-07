@@ -6,6 +6,19 @@
   <title>Camille & Foukou Mariage</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+document.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  // FIRST IMAGE unblurs as soon as you start scrolling
+  const blur1 = Math.max(4 - scrollY / 40, 0);
+  document.querySelector(".bg1").style.filter = `blur(${blur1}px)`;
+
+  // SECOND IMAGE unblurs when you reach it
+  const blur2 = Math.max(4 - (scrollY - window.innerHeight) / 40, 0);
+  document.querySelector(".bg2").style.filter = `blur(${blur2}px)`;
+});
+</script>
 
 <body>
 
