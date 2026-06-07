@@ -9,13 +9,6 @@
 
 <body>
 
-<!-- BACKGROUND IMAGES (mobile only) -->
-<div class="bg1"></div>
-<div class="bg2"></div>
-
-<!-- SPACER to show first image fully before content box appears -->
-<div class="spacer"></div>
-
 <div class="container">
 
   <h1>Camille & Foukou Mariage</h1>
@@ -56,18 +49,25 @@
 
 </div>
 
+<!-- IMAGE 1 -->
+<div class="photo photo1"></div>
+
+<!-- IMAGE 2 -->
+<div class="photo photo2"></div>
+
 <script src="script.js"></script>
 
-<!-- SCROLL UNBLUR SCRIPT -->
 <script>
 document.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
+  // Unblur image 1
   const blur1 = Math.max(4 - scrollY / 40, 0);
-  document.querySelector(".bg1").style.filter = `blur(${blur1}px)`;
+  document.querySelector(".photo1").style.filter = `blur(${blur1}px)`;
 
+  // Unblur image 2
   const blur2 = Math.max(4 - (scrollY - window.innerHeight) / 40, 0);
-  document.querySelector(".bg2").style.filter = `blur(${blur2}px)`;
+  document.querySelector(".photo2").style.filter = `blur(${blur2}px)`;
 });
 </script>
 
