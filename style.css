@@ -2,40 +2,34 @@
 body {
   margin: 0;
   padding: 0;
+  background: white; /* clean background behind content box */
 }
 
-/* DESKTOP BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+/* DESKTOP BACKGROUND (unchanged) */
+@media (min-width: 601px) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 
-  background-image: url("bg-left.jpg"), url("bg-right.jpg");
-  background-size: 50% 100%, 50% 100%;
-  background-position: left top, right top;
-  background-repeat: no-repeat, no-repeat;
+    background-image: url("bg-left.jpg"), url("bg-right.jpg");
+    background-size: 50% 100%, 50% 100%;
+    background-position: left top, right top;
+    background-repeat: no-repeat, no-repeat;
 
-  filter: blur(2px);
-}
-
-/* MOBILE BACKGROUND IMAGES */
-.bg1, .bg2 {
-  display: none;
-}
-
-/* SPACER to reveal first image */
-.spacer {
-  display: none;
+    filter: blur(2px);
+  }
 }
 
 /* CONTENT BOX */
 .container {
   max-width: 550px;
   margin: auto;
+  margin-top: 40px;
   padding: 30px;
   background: rgba(255, 220, 230, 0.92);
   border-radius: 18px;
@@ -45,52 +39,22 @@ body::before {
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* MOBILE LAYOUT */
-@media (max-width: 600px) {
+/* MOBILE IMAGES BELOW CONTENT */
+.photo {
+  width: 100%;
+  height: 100vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+}
 
-  /* REMOVE DESKTOP BACKGROUND */
-  body::before {
-    display: none;
-  }
+/* IMAGE 1 */
+.photo1 {
+  background-image: url("bg-left.jpg");
+}
 
-  /* MOBILE BACKGROUND IMAGES */
-  .bg1, .bg2 {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    z-index: -2;
-  }
-
-  .bg1 {
-    top: 0;
-    background-image: url("bg-left.jpg");
-  }
-
-  .bg2 {
-    top: 100vh;
-    background-image: url("bg-right.jpg");
-  }
-
-  /* SPACER pushes content box BELOW first image */
-  .spacer {
-    display: block;
-    height: 100vh;
-  }
-
-  /* Content box */
-  .container {
-    margin-top: 0;
-    z-index: 10;
-  }
-
-  /* Body height = exactly 2 images + content */
-  body {
-    height: calc(200vh + 100vh); /* 2 images + content area */
-  }
+/* IMAGE 2 */
+.photo2 {
+  background-image: url("bg-right.jpg");
 }
