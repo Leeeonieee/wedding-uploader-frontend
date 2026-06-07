@@ -1,13 +1,61 @@
-<div class="bg1"></div>
-<div class="bg2"></div>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Camille & Foukou Mariage</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
+<body>
+
+<!-- MOBILE BACKGROUND IMAGES -->
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<div class="container">
+
+  <h1>Camille & Foukou Mariage</h1>
+  <h2>Partagez vos souvenirs</h2>
+
+  <p class="description">
+    Merci de partager vos photos et vidéos de notre quête photo du mariage
+    <strong>“Capturez Le Moment”</strong>.
+  </p>
+
+  <form id="uploadForm">
+
+    <input type="text" id="name" name="name" placeholder="Nom complet" required />
+
+    <div class="button-group">
+      <label class="btn upload-btn">
+        📁 Télécharger photos / vidéos
+        <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
+      </label>
+
+      <label class="btn camera-btn">
+        📸 Prendre une photo / vidéo
+        <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
+      </label>
+    </div>
+
+    <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
+
+    <progress id="progressBar" value="0" max="100"></progress>
+
+    <button type="submit" class="submit-btn">Envoyer</button>
+  </form>
+
+  <div id="thankyou" class="hidden">
+    <h2>Merci beaucoup !</h2>
+    <p>Vos photos et vidéos ont été envoyées avec succès.</p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<!-- SCROLL UNBLUR SCRIPT -->
 <script>
 document.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
@@ -22,50 +70,5 @@ document.addEventListener("scroll", () => {
 });
 </script>
 
-<body>
-
-<div class="background-blur"></div>
-  
-  <div class="container">
-
-    <h1>Camille & Foukou Mariage</h1>
-    <h2>Partagez vos souvenirs</h2>
-
-    <p class="description">
-      Merci de partager vos photos et vidéos de notre quête photo du mariage
-      <strong>“Capturez Le Moment”</strong>.
-    </p>
-
-    <form id="uploadForm">
-
-      <input type="text" id="name" name="name" placeholder="Nom complet" required />
-
-      <div class="button-group">
-        <label class="btn upload-btn">
-          📁 Télécharger photos / vidéos
-          <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
-        </label>
-
-        <label class="btn camera-btn">
-          📸 Prendre une photo / vidéo
-          <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
-        </label>
-      </div>
-
-       <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
-      
-      <progress id="progressBar" value="0" max="100"></progress>
-
-      <button type="submit" class="submit-btn">Envoyer</button>
-    </form>
-
-    <div id="thankyou" class="hidden">
-      <h2>Merci beaucoup !</h2>
-      <p>Vos photos et vidéos ont été envoyées avec succès.</p>
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
