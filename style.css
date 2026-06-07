@@ -56,18 +56,18 @@ body::before {
   }
 
   /* MOBILE BACKGROUND IMAGES */
-  .bg1, .bg2 {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-size: 100% auto;
-    background-position: center top;
-    background-repeat: no-repeat;
-    filter: blur(4px);
-    z-index: -2;
-  }
+ .bg1, .bg2 {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: contain;      /* FULL IMAGE, SAME WIDTH */
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  z-index: -2;
+}
 
   .bg1 {
     top: 0;
