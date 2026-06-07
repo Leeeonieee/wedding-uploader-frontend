@@ -1,13 +1,7 @@
-/* GLOBAL BODY SETTINGS */
+/* GLOBAL */
 body {
   margin: 0;
   padding: 0;
-}
-
-/* FORCE REAL SCROLL HEIGHT */
-.scroll-wrapper {
-  height: 300vh; /* 3 full screens = enough to reveal both images */
-  position: relative;
 }
 
 /* DESKTOP BACKGROUND */
@@ -28,8 +22,13 @@ body::before {
   filter: blur(2px);
 }
 
-/* MOBILE BACKGROUND IMAGES (hidden on desktop) */
+/* MOBILE BACKGROUND IMAGES */
 .bg1, .bg2 {
+  display: none;
+}
+
+/* SPACER to reveal first image */
+.spacer {
   display: none;
 }
 
@@ -37,7 +36,6 @@ body::before {
 .container {
   max-width: 550px;
   margin: auto;
-  margin-top: 40px;
   padding: 30px;
   background: rgba(255, 220, 230, 0.92);
   border-radius: 18px;
@@ -56,18 +54,18 @@ body::before {
   }
 
   /* MOBILE BACKGROUND IMAGES */
- .bg1, .bg2 {
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-size: contain;      /* FULL IMAGE, SAME WIDTH */
-  background-position: center top;
-  background-repeat: no-repeat;
-  filter: blur(4px);
-  z-index: -2;
-}
+  .bg1, .bg2 {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    filter: blur(4px);
+    z-index: -2;
+  }
 
   .bg1 {
     top: 0;
@@ -79,11 +77,20 @@ body::before {
     background-image: url("bg-right.jpg");
   }
 
+  /* SPACER pushes content box BELOW first image */
+  .spacer {
+    display: block;
+    height: 100vh;
+  }
+
   /* Content box */
   .container {
-    margin: 20px auto;
-    padding: 25px;
-    position: relative;
+    margin-top: 0;
     z-index: 10;
+  }
+
+  /* Body height = exactly 2 images + content */
+  body {
+    height: calc(200vh + 100vh); /* 2 images + content area */
   }
 }
