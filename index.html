@@ -9,54 +9,52 @@
 
 <body>
 
-<!-- SCROLL WRAPPER (forces real scroll height) -->
-<div class="scroll-wrapper">
+<!-- BACKGROUND IMAGES (mobile only) -->
+<div class="bg1"></div>
+<div class="bg2"></div>
 
-  <!-- MOBILE BACKGROUND IMAGES -->
-  <div class="bg1"></div>
-  <div class="bg2"></div>
+<!-- SPACER to show first image fully before content box appears -->
+<div class="spacer"></div>
 
-  <div class="container">
+<div class="container">
 
-    <h1>Camille & Foukou Mariage</h1>
-    <h2>Partagez vos souvenirs</h2>
+  <h1>Camille & Foukou Mariage</h1>
+  <h2>Partagez vos souvenirs</h2>
 
-    <p class="description">
-      Merci de partager vos photos et vidéos de notre quête photo du mariage
-      <strong>“Capturez Le Moment”</strong>.
-    </p>
+  <p class="description">
+    Merci de partager vos photos et vidéos de notre quête photo du mariage
+    <strong>“Capturez Le Moment”</strong>.
+  </p>
 
-    <form id="uploadForm">
+  <form id="uploadForm">
 
-      <input type="text" id="name" name="name" placeholder="Nom complet" required />
+    <input type="text" id="name" name="name" placeholder="Nom complet" required />
 
-      <div class="button-group">
-        <label class="btn upload-btn">
-          📁 Télécharger photos / vidéos
-          <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
-        </label>
+    <div class="button-group">
+      <label class="btn upload-btn">
+        📁 Télécharger photos / vidéos
+        <input type="file" id="files" name="files" accept="image/*,video/*" multiple hidden>
+      </label>
 
-        <label class="btn camera-btn">
-          📸 Prendre une photo / vidéo
-          <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
-        </label>
-      </div>
-
-      <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
-
-      <progress id="progressBar" value="0" max="100"></progress>
-
-      <button type="submit" class="submit-btn">Envoyer</button>
-    </form>
-
-    <div id="thankyou" class="hidden">
-      <h2>Merci beaucoup !</h2>
-      <p>Vos photos et vidéos ont été envoyées avec succès.</p>
+      <label class="btn camera-btn">
+        📸 Prendre une photo / vidéo
+        <input type="file" id="camera" name="files" accept="image/*,video/*" capture="environment" multiple hidden>
+      </label>
     </div>
 
+    <p id="fileCount" class="file-count">Aucun fichier sélectionné</p>
+
+    <progress id="progressBar" value="0" max="100"></progress>
+
+    <button type="submit" class="submit-btn">Envoyer</button>
+  </form>
+
+  <div id="thankyou" class="hidden">
+    <h2>Merci beaucoup !</h2>
+    <p>Vos photos et vidéos ont été envoyées avec succès.</p>
   </div>
 
-</div> <!-- END scroll-wrapper -->
+</div>
 
 <script src="script.js"></script>
 
