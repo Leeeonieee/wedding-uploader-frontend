@@ -60,7 +60,7 @@
 document.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
-  // FIRST IMAGE unblurs as soon as you start scrolling
+  // FIRST IMAGE unblurs as you scroll
   const blur1 = Math.max(4 - scrollY / 40, 0);
   document.querySelector(".bg1").style.filter = `blur(${blur1}px)`;
 
