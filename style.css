@@ -29,11 +29,11 @@ body::before {
   margin: auto;
   margin-top: 40px;
   padding: 30px;
-  background: rgba(255, 220, 230, 0.92); /* pastel pink */
+  background: rgba(255, 220, 230, 0.92);
   border-radius: 18px;
   text-align: center;
   position: relative;
-  z-index: 1; /* ensures content stays above blurred background */
+  z-index: 1;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
@@ -114,29 +114,30 @@ input[type="text"] {
   display: none;
 }
 
-/* MOBILE IMPROVEMENTS */
 @media (max-width: 600px) {
+
+  /* Background stays fixed but shows more of the images */
   body::before {
-    background-size: contain, contain;
-    background-position: top left, top right;
+    background-size: auto 100%, auto 100%; /* show full height, no zoom */
+    background-position: left center, right center;
     background-repeat: no-repeat, no-repeat;
-    height: auto;
-    min-height: 200vh; /* makes the background scrollable */
+    filter: blur(2px);
   }
 
+  /* Content scrolls normally */
   .container {
-    margin: 20px;
+    margin: 20px auto;
     padding: 25px;
     position: relative;
     z-index: 2;
   }
-}
 
-  .container {
-    margin: 20px;
-    padding: 25px;
+  /* Add extra scroll space so users can see the background */
+  body {
+    padding-bottom: 120vh; /* scroll down to admire images */
   }
 
+  /* Mobile text adjustments */
   h1 {
     font-size: 1.9rem;
   }
