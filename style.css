@@ -157,7 +157,7 @@ input[type="text"] {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  margin-top: 100px; /* increase this value to move it down */
+  margin-top: 200px; /* increase this value to move it down */
 }
 
 .button-link:hover {
