@@ -157,9 +157,6 @@ input[type="text"] {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  margin-top: 300px; /* increase this value to move it down */
+  margin-top: 500px; /* increase this value to move it down */
 }
 
-.button-link:hover {
-  background-color:rgba(255, 220, 230, 0.92);
-}
