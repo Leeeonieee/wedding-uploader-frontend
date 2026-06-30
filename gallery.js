@@ -1,6 +1,6 @@
 
 async function load(){
- const res = await fetch("http://localhost:3000/files");
+ const res = await fetch("http://localhost:4000/files");
  const data = await res.json();
 
  const q = document.getElementById("search").value.toLowerCase();
@@ -9,7 +9,7 @@ async function load(){
 
  data.filter(f=>f.guest.toLowerCase().includes(q))
  .forEach(f=>{
-   const url = `https://drive.google.com/uc?id=${f.id}`;
+   const url = `https://drive.google.com/drive/folders/10xYKuixE9GESqJ--zuPg4a9I3SsA9Orx`;
 
    const el = document.createElement("div");
 
