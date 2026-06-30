@@ -9,7 +9,7 @@ async function load(){
 
  data.filter(f=>f.guest.toLowerCase().includes(q))
  .forEach(f=>{
-   const url = `https://drive.google.com/drive/folders/10xYKuixE9GESqJ--zuPg4a9I3SsA9Orx`;
+   const url = `https://drive.google.com/drive/folders/10xYKuixE9GESqJ--zuPg4a9I3SsA9Orx?usp=drive_link`;
 
    const el = document.createElement("div");
 
