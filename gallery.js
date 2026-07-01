@@ -14,9 +14,12 @@ async function loadData() {
 function applyFilter() {
   const q = document.getElementById("search").value.toLowerCase();
 
-  filteredData = allData.filter(f =>
-    (f.name || "").toLowerCase().includes(q)
-  );
+ filteredData = allData.filter(f => {
+  const fileName = (f.name || "").toLowerCase();
+  const guestName = (f.guest || "").toLowerCase();
+
+  return fileName.includes(q) || guestName.includes(q);
+});
 
   const grid = document.getElementById("grid");
   grid.innerHTML = "";
