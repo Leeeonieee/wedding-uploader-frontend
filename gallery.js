@@ -5,7 +5,7 @@ let loadedCount = 0;
 const BATCH_SIZE = 20;
 
 async function loadData() {
-  const res = await fetch("https://script.google.com/macros/s/AKfycbw9TEFO4HPb3KkvU1GsIgXWYqv1JsyZbwVbvRzgZ5f0d7cnVolsEcbsGLpRoYnhMtMigA/execc");
+  const res = await fetch("https://script.google.com/macros/s/AKfycbw9TEFO4HPb3KkvU1GsIgXWYqv1JsyZbwVbvRzgZ5f0d7cnVolsEcbsGLpRoYnhMtMigA/exec");
   allData = await res.json();
 
   applyFilter();
