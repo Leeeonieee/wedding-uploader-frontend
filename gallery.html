@@ -1,20 +1,34 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8">
 <title>Galerie</title>
-<link rel="stylesheet" href="gallery.css"/>
+<link rel="stylesheet" href="gallery.css">
 </head>
 <body>
 
 <a href="index.html">← Retour</a>
+
 <h2>📷 Galerie des invités</h2>
-  
+
 <input id="search" placeholder="Rechercher...">
 
 <div id="grid" class="gallery"></div>
 
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span id="close">&times;</span>
+
+  <img id="lightboxImage">
+
+  <iframe
+      id="lightboxVideo"
+      allow="autoplay"
+      allowfullscreen>
+  </iframe>
+</div>
+
 <script src="gallery.js"></script>
+
 </body>
 </html>
