@@ -29,35 +29,43 @@ function applyFilter() {
 }
 
 function loadMore() {
-  const grid = document.getElementById("grid");
 
-  const nextItems = filteredData.slice(loadedCount, loadedCount + BATCH_SIZE);
+    const grid=document.getElementById("grid");
 
-  nextItems.forEach(f => {
-    const el = document.createElement("div");
+    const nextItems=filteredData.slice(loadedCount,loadedCount+BATCH_SIZE);
 
-    const isImage = f.mimeType && f.mimeType.startsWith("image/");
+    nextItems.forEach(f=>{
 
-    if (isImage) {
-      el.innerHTML = `
-        <img src="${f.url}" loading="lazy"
-          style="width:100%; border-radius:8px;">
-        <p>${f.name}</p>
-      `;
-    } else {
-      el.innerHTML = `
-        <video src="${f.url}" controls
-          style="width:100%; border-radius:8px;"></video>
-        <p>${f.name}</p>
-      `;
-    }
+        const card=document.createElement("div");
+        card.className="card";
 
-    grid.appendChild(el);
-  });
+        if(f.mimeType.startsWith("image/")){
 
-  loadedCount += BATCH_SIZE;
+            card.innerHTML=`
+                <img src="${f.thumbnail}" loading="lazy">
+                <p>${f.guest}</p>
+            `;
+
+        }else{
+
+            card.innerHTML=`
+                <div class="video-thumb">
+                    <img src="${f.thumbnail}" loading="lazy">
+                    <div class="play">▶</div>
+                </div>
+                <p>${f.guest}</p>
+            `;
+
+        }
+
+        card.onclick=()=>openViewer(f);
+
+        grid.appendChild(card);
+
+    });
+
+    loadedCount+=BATCH_SIZE;
 }
-
 function handleScroll() {
   const scrollPos = window.innerHeight + window.scrollY;
   const threshold = document.body.offsetHeight - 300;
@@ -73,3 +81,40 @@ document.getElementById("search").addEventListener("input", applyFilter);
 window.addEventListener("scroll", handleScroll);
 
 loadData();
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxVideo = document.getElementById("lightboxVideo");
+const closeBtn = document.getElementById("close");
+
+function openViewer(file) {
+
+    lightbox.style.display = "flex";
+
+    if (file.mimeType.startsWith("image/")) {
+
+        lightboxImage.style.display = "block";
+        lightboxVideo.style.display = "none";
+
+        lightboxImage.src = file.thumbnail;
+
+    } else {
+
+        lightboxImage.style.display = "none";
+        lightboxVideo.style.display = "block";
+
+        lightboxVideo.src = file.preview;
+
+    }
+}
+
+closeBtn.onclick = function () {
+    lightbox.style.display = "none";
+    lightboxVideo.src = "";
+};
+
+lightbox.onclick = function (e) {
+    if (e.target === lightbox) {
+        lightbox.style.display = "none";
+        lightboxVideo.src = "";
+    }
+};
