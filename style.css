@@ -63,20 +63,6 @@ h2 {
   font-size: 1.4rem;
 }
 
-.button-link {
-  width: 100%;
-  padding: 18px;
-  font-size: 1.4rem;
-  background: #222;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 500px; /* increase this value to move it down */
-}
-
-
-
 /* DESCRIPTION */
 .description {
   font-size: 1.2rem;
