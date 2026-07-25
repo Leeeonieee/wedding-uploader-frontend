@@ -51,8 +51,8 @@ h2 {
 
 .button-link {
   display: block;
-  width: 300px;
-  margin: 30px auto;
+  width: 100px;
+  margin: auto;
   padding: 18px;
   background: #222;
   color: white;
